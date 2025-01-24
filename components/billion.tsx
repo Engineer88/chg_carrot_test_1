@@ -2,12 +2,12 @@
 
 import { useRouter } from "next/navigation";
 
-interface IBillion {
+export interface IBillion {
   id: string;
   fullname: string;
   image_path: string;
   asset: number;
-  industry: string;
+  industry?: string[];
 }
 
 export default function Billion({

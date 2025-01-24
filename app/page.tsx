@@ -1,4 +1,4 @@
-import Billion from "@/components/billion";
+import Billion, { IBillion } from "@/components/billion";
 import { API_URL } from "./constants";
 
 export const metadata = {
@@ -17,14 +17,14 @@ export default async function Home() {
   return (
     <div className="bg-black text-white w-full items-center flex flex-col">
       <div className="w-2/3 py-6 grid grid-cols-4">
-        {billions.map((billion) => (
+        {billions.map((billion: IBillion) => (
           <Billion
             key={billion.id}
             id={billion.id}
-            fullname={billion.name}
-            image_path={billion.squareImage}
-            asset={billion.netWorth}
-            industry={billion?.industries}
+            name={billion.name}
+            squareImage={billion.squareImage}
+            netWorth={billion.netWorth}
+            industries={billion.industries}
           />
         ))}
       </div>
