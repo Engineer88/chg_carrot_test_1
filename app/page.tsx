@@ -1,10 +1,9 @@
 import Billion from "@/components/billion";
+import { API_URL } from "./constants";
 
 export const metadata = {
   title: "Home",
 };
-
-export const API_URL = "https://billions-api.nomadcoders.workers.dev/";
 
 async function getBillion() {
   const response = await fetch(API_URL);
