@@ -4,31 +4,31 @@ import { useRouter } from "next/navigation";
 
 export interface IBillion {
   id: string;
-  fullname: string;
-  image_path: string;
-  asset: number;
-  industry?: string[];
+  name: string;
+  squareImage: string;
+  netWorth: number;
+  industries?: string[];
 }
 
 export default function Billion({
   id,
-  fullname,
-  image_path,
-  asset,
-  industry,
+  name,
+  squareImage,
+  netWorth,
+  industries,
 }: IBillion) {
-  const adjustAsset = Math.round(asset / 1000);
+  const adjustAsset = Math.round(netWorth / 1000);
   const router = useRouter();
   const onClick = () => {
     router.push(`/person/${id}`);
   };
   return (
     <div className="px-3 py-6">
-      <img src={image_path} alt="image" onClick={onClick} />
-      <span>{fullname}</span>
+      <img src={squareImage} alt="image" onClick={onClick} />
+      <span>{name}</span>
       <div>
         <span>
-          {adjustAsset} Billion / {industry}
+          {adjustAsset} Billion / {industries}
         </span>
       </div>
     </div>

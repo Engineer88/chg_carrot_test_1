@@ -5,6 +5,13 @@ export async function getBillion(id: string) {
   return response.json();
 }
 
+interface Asset {
+  ticker: string;
+  companyName: string;
+  numberOfShares: number;
+  sharePrice: number;
+}
+
 export default async function BillionInfo({ id }: { id: string }) {
   const billion = await getBillion(id);
   const adjustAsset = Math.round(billion.netWorth / 1000);
@@ -21,7 +28,7 @@ export default async function BillionInfo({ id }: { id: string }) {
       <div className="flex flex-col py-5 w-3/5">
         <h1 className="font-semibold text-2xl py-5">Financial Asset</h1>
         <div className="grid grid-cols-4 gap-5">
-          {billion.financialAssets.map((asset) => (
+          {billion.financialAssets.map((asset: Asset) => (
             <div
               key={billion.id}
               className="flex flex-col border border-red-300 rounded-md"
